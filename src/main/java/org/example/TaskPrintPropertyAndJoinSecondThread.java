@@ -1,6 +1,6 @@
 package org.example;
 
-public class TaskPrintPropertyAndJoinSecondThread extends Thread {
+public class TaskPrintPropertyAndJoinSecondThread implements Runnable {
     @Override
     public void run() {
         System.out.println("start");
