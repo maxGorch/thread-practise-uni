@@ -1,17 +1,14 @@
 package org.example;
 
-import com.sun.source.tree.TryTree;
-
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-
-    private static final int NUM_THREADS =2;
-    private static final int NUM_ITERS =10;
-
+    private static final int NUM_ITERS = 10;
 
     public static void main(String[] args) throws InterruptedException {
+        // Задание №1-3
         TaskPrintPropertyAndJoinSecondThread th0 = new TaskPrintPropertyAndJoinSecondThread();
         Thread threadPrintProperty = new Thread(th0);
 
@@ -34,52 +31,47 @@ public class Main {
         th2.join();
         th3.join();
 
-        //В основном потоке создать ArrayList. Запустить 2 потока на базе разных
-        //классов: один поток 10000 раз добавляет в список случайное целое число,
-        //другой 10000 раз удаляет элемент по случайному индексу. Использовать
-        //внешний synchronized блок
-        ArrayList<Integer> arr = new ArrayList();
-        var data = new DataHolder();
-        try(final var executor = Executors.newFixedThreadPool(NUM_THREADS)){
+        // Задание №4
 
-                executor.submit(new Runnable() {
-                    @Override
-                    public void run()
-                    {
-                        for (int j=0;j<NUM_ITERS;j++)
-                        {
-                            try {
-                                Thread.sleep(200);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                            data.add();
-                            //System.out.println("Получаем элемент, который мы будем ДОБАВЛЯТЬ: " + data.getDataElement(j));
+        List<Integer> arr = new ArrayList<>();
+        task4.solve(arr);
 
-                        }
-                    }
-            });
+        // Задание №5
+        // То же самое что №4, но оба потока на базе одного и того же класса,
+        // использовать synchronized методы.
 
-            executor.submit(new Runnable() {
-                @Override
-                public void run()
-                {
-                    for (int j=0;j<NUM_ITERS;j++)
-                    {
-                        try {
-                            Thread.sleep(300);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                        //System.out.println("Получаем элемент, который мы будем УДАЛЯТЬ: " + data.getDataElement(j));
-                        //data.delete();
-                }
-                }
-            });
+        // task5 data = new task5();
+        // Runnable dataAdd = () -> {
+        // try {
+        // for (int i = 0; i < NUM_ITERS; i++) {
+        // data.add();
+        // System.out.println(data.getData());
+        // }
+        // } catch (Exception e) {
+        // System.out.println(e);
+        // }
+        // };
+        // Runnable dataDelete = () -> {
+        // try {
+        // for (int i = 0; i < NUM_ITERS; i++) {
+        // System.out.println(data.getData());
+        // data.delete();
+        // }
+        // } catch (Exception e) {
+        // System.out.println(e);
+        // }
+        // };
+        // Thread threadAdd = new Thread(dataAdd);
+        // Thread threadRemove = new Thread(dataDelete);
 
-        }
-        System.out.println("Ожидаем: "+(NUM_ITERS) +"\n"
-                + ", актуально: " + data.getDataSize());
+        // threadAdd.start();
+        // threadRemove.start();
+
+        // Задание №6
+        // То же самое. использовать метод Collections.synchronizedList
+
+        // List<Integer> syncList = Collections.synchronizedList(new ArrayList<>());
+        // task6.solve(syncList);
 
     }
 
