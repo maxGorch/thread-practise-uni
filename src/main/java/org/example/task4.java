@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 public class task4 {
-    private static final int NUM_ITERS = 10;
+    private static final int NUM_ITERS = 100;
     static Random rand = new Random();
 
     // В основном потоке создать ArrayList. Запустить 2 потока на базе разных

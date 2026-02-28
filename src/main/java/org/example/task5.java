@@ -22,7 +22,9 @@ public class task5 {
     }
 
     public synchronized void delete() {
-        int random = rand.nextInt(data.size());
-        data.remove(random);
+        if (!data.isEmpty()) {
+            int random = rand.nextInt(data.size());
+            data.remove(random);
+        }
     }
 }

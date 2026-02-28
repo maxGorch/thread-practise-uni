@@ -16,6 +16,7 @@ public class AddRunnable implements Runnable {
         try {
             for (int i = 0; i < NUM_ITERS; i++) {
                 synchronized (arr) {
+                    Thread.sleep(100);
                     arr.add((int) (Math.random() * (75 - 10 + 1)) + 10);
                     System.out.println(arr);
                 }

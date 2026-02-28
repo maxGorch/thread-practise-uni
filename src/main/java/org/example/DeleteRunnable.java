@@ -18,6 +18,7 @@ public class DeleteRunnable implements Runnable {
             for (int i = 0; i < NUM_ITERS; i++) {
                 synchronized (arr) {
                     if (!arr.isEmpty()) {
+                        Thread.sleep(100);
                         System.out.println(arr);
                         int index = new Random().nextInt(arr.size());
                         arr.remove(index);
