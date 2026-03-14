@@ -1,6 +1,6 @@
-package org.example;
+package org.example.task3;
 
-public class threadTwo implements Runnable {
+public class threadThree implements Runnable {
     @Override
     public void run()
     {

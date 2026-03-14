@@ -1,4 +1,4 @@
-package org.example;
+package org.example.task6;
 
 import java.util.List;
 import java.util.Random;

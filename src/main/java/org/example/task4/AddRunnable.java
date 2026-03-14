@@ -1,4 +1,4 @@
-package org.example;
+package org.example.task4;
 
 import java.util.List;
 

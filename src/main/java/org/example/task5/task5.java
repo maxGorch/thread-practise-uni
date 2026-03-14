@@ -1,4 +1,4 @@
-package org.example;
+package org.example.task5;
 
 import java.util.ArrayList;
 import java.util.List;

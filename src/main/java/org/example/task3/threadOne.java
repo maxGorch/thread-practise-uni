@@ -1,9 +1,8 @@
-package org.example;
+package org.example.task3;
 
-public class threadThree implements Runnable {
+public class threadOne implements Runnable {
     @Override
-    public void run()
-    {
+    public void run() {
         try {
             System.out.println("SubThread start!" + Thread.currentThread().getName());
             Thread.sleep(300);

@@ -1,14 +1,13 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.ExecutionException;
+
+import org.example.task7.MonitorCapt;
 
 public class Main {
     private static final int NUM_ITERS = 10;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         // Задание №1-3
         // TaskPrintPropertyAndJoinSecondThread th0 = new
         // TaskPrintPropertyAndJoinSecondThread();
@@ -82,11 +81,16 @@ public class Main {
         // обязаны чередоваться, т.е. не может быть ситуации, когда ping или pong
         // появляется в консоли более одного раза подряд.
 
-        Semaphore semaphore1 = new Semaphore(1);
-        Semaphore semaphore2 = new Semaphore(1);
+        Thread t = new Thread(new MonitorCapt());
+        t.start();
+        
+        
 
-        SemaphorRes semaphorRun = new SemaphorRes(semaphore1, semaphore2);
-        new Thread(semaphorRun).start();
+
+        // SemaphorRes semaphorRun = new SemaphorRes(semaphore1, semaphore2);
+        // new Thread(semaphorRun).start();
+
+
 
     }
 
