@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import org.example.task11.mainThread;
+import org.example.task11.task11;
 import org.example.task4.task4;
 import org.example.task7.MonitorCapt;
 import org.example.task8.task8;
@@ -115,7 +115,7 @@ public class Main {
         // Потоки должны корректно форматировать дату-время, синхронизация не
         // разрешается.
 
-        Thread th1 = new Thread(new mainThread());
+        Thread th1 = new Thread(new task11());
         th1.start();
 
     }
