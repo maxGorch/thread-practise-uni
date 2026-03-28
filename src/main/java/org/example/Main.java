@@ -1,10 +1,13 @@
 package org.example;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+import org.example.task11.Formatter;
 import org.example.task11.task11;
 import org.example.task4.task4;
 import org.example.task7.MonitorCapt;
@@ -12,7 +15,7 @@ import org.example.task8.task8;
 import org.example.task9.task9;
 
 public class Main {
-    private static final int NUM_ITERS = 10;
+    private static final int NUM_THREAD = 5;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         // Задание №1-3
@@ -115,9 +118,17 @@ public class Main {
         // Потоки должны корректно форматировать дату-время, синхронизация не
         // разрешается.
 
-        Thread th1 = new Thread(new task11());
-        th1.start();
+        Formatter newFormatter = new Formatter();
 
+        Thread[] threads = new Thread[NUM_THREAD];
+        for (int i = 0; i < NUM_THREAD; i++) {
+            threads[i] = new Thread(new task11(newFormatter));
+            threads[i].start();
+        }
+        for (int i = 0; i < NUM_THREAD; i++) {
+            threads[i].join();
+        }
+        System.out.println("Ended");
     }
 
 }
